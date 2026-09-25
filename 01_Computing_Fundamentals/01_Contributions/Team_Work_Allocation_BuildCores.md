@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **Team name** | |
+| **Team name** `| |
 | **Repository** | |
 | **Submission date** | Friday 23 October 2026 |
 | **How we'll keep in touch** | *(e.g. group chat, weekly check-in)* |
