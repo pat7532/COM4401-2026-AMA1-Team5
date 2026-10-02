@@ -1,47 +1,134 @@
+-- employee table
+-- stores basic employee information
 
-/*
-    Employee table
-    Stores basic employee information
-    Use auto numbers to generate a unique ID 
-*/
-
-CREATE TABLE Employee(
-    employeeID INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE employee (
+    employeeId INT AUTO_INCREMENT PRIMARY KEY,
     employeeName VARCHAR(255) NOT NULL
 );
 
 
-CREATE TABLE EmployeeRole (
-    employeeRoleID INT AUTO_INCREMENT PRIMARY KEY,
-    employeeID INT,
-    roleDescription TEXT NOT NULL, 
-    roleBudget DECIMAL(8,2) NOT NULL,
-    FOREIGN KEY (employeeID)
-        REFERENCES Employee(employeeID)
+-- employee role table
+-- stores an employee's role and workstation budget
+
+CREATE TABLE employeeRole (
+    employeeRoleId INT AUTO_INCREMENT PRIMARY KEY,
+    employeeId INT NOT NULL,
+    roleDescription TEXT NOT NULL,
+    roleBudget DECIMAL(10,2) NOT NULL,
+
+    FOREIGN KEY (employeeId)
+        REFERENCES employee(employeeId)
 );
 
-CREATE TABLE WorkstationBuilds(
-    workstationBuildID INT AUTO_INCREMENT PRIMARY KEY, 
-    employeeRoleID INT, 
-    workstationBuildRecomendation TEXT NOT NULL,
-    FOREIGN KEY (employeeRoleID)
-      REFERENCES EmployeeRole(employeeRoleID)
+
+-- workstation build table
+-- stores the recommended workstation for each employee role
+
+CREATE TABLE workstationBuild (
+    workstationBuildId INT AUTO_INCREMENT PRIMARY KEY,
+    employeeRoleId INT NOT NULL,
+    workstationBuildRecommendation TEXT NOT NULL,
+
+    FOREIGN KEY (employeeRoleId)
+        REFERENCES employeeRole(employeeRoleId)
 );
 
-CREATE TABLE Builds (
-  buildID INT AUTO_INCREMENT PRIMARY KEY, 
-  workstationBuildID INT, 
-  buildCpu TEXT NOT NULL, 
-  buildRAM TEXT NOT NULL,
-  buildGPU TEXT,
-  buildPwr TEXT NOT NULL, 
-  buildMouse TEXT NOT NULl, 
-  buildKeyboard TEXT NOT NULL,
-  buildMonitor TEXT NOT NULL, 
-  buildTotalCost  DECIMAL NOT NULL,
 
-  FOREIGN KEY (workstationBuildID)
-    REFERENCES WorkstationBuilds(workstationBuildID)
+-- build table
+-- stores the components and total cost of the workstation
 
+CREATE TABLE build (
+    buildId INT AUTO_INCREMENT PRIMARY KEY,
+    workstationBuildId INT NOT NULL,
+    buildCpu VARCHAR(255) NOT NULL,
+    buildRam VARCHAR(255) NOT NULL,
+    buildGpu VARCHAR(255),
+    buildPwr VARCHAR(255) NOT NULL,
+    buildMouse VARCHAR(255) NOT NULL,
+    buildKeyboard VARCHAR(255) NOT NULL,
+    buildMonitor VARCHAR(255) NOT NULL,
+    buildTotalCost DECIMAL(10,2) NOT NULL,
+
+    FOREIGN KEY (workstationBuildId)
+        REFERENCES workstationBuild(workstationBuildId)
 );
-tesy
+
+
+-- insert employee
+
+INSERT INTO employee (employeeName)
+VALUES ('Patryk');
+
+
+-- insert employee role
+
+INSERT INTO employeeRole (
+    employeeId,
+    roleDescription,
+    roleBudget
+)
+VALUES (
+    1,
+    'Project Manager - Business Workstation',
+    1250.00
+);
+
+
+-- insert workstation recommendation
+
+INSERT INTO workstationBuild (
+    employeeRoleId,
+    workstationBuildRecommendation
+)
+VALUES (
+    1,
+    'Business workstation suitable for project management, office applications, multitasking, video conferencing and general productivity.'
+);
+
+
+-- insert workstation build
+
+INSERT INTO build (
+    workstationBuildId,
+    buildCpu,
+    buildRam,
+    buildGpu,
+    buildPwr,
+    buildMouse,
+    buildKeyboard,
+    buildMonitor,
+    buildTotalCost
+)
+VALUES (
+    1,
+    'AMD Ryzen 5 9600X',
+    '16GB Corsair Vengeance RGB DDR5 5200',
+    NULL,
+    'MSI MAG A650GL 650W 80+ Gold',
+    'Generic USB Optical Office Mouse',
+    'Generic USB Wired Office Keyboard',
+    'Dell 27 Plus QHD S2725DSM',
+    1250.00
+);
+-- display all employees
+SELECT *
+FROM employee;
+
+
+-- display all employee roles
+
+SELECT *
+FROM employeeRole;
+
+
+-- display all workstation recommendations
+
+SELECT *
+FROM workstationBuild;
+
+
+-- display all computer builds
+
+SELECT *
+FROM build;
+
