@@ -173,4 +173,8 @@ FROM workstationBuild;
 
 SELECT *
 FROM build;
-
+-- Display total build costs
+SELECT *
+FROM build;
+SELECT CONCAT('£', FORMAT(SUM(buildTotalCost), 2)) AS totalBuildCost
+FROM build;
