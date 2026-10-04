@@ -110,6 +110,53 @@ VALUES (
     'Dell 27 Plus QHD S2725DSM',
     1250.00
 );
+
+INSERT INTO employee (employeeName)
+VALUES ('gowri');
+
+
+INSERT INTO employeeRole (employeeId, roleDescription,roleBudget
+)
+VALUES (
+    2,
+    'Architect-CAD Workstation', 2500.00
+    
+);
+
+
+
+INSERT INTO workstationBuild (employeeRoleId,workstationBuildRecommendation
+)
+VALUES (
+    2,'CAD worksation which includes high relosution monitors and large capacity of storge that can store requird programms and data a dedicated GPU which can multitask and provide greate resolution and with better performance '
+);
+
+
+
+
+INSERT INTO build (
+    workstationBuildId,
+    buildCpu,
+    buildRam,
+    buildGpu,
+    buildPwr,
+    buildMouse,
+    buildKeyboard,
+    buildMonitor,
+    buildTotalCost
+)
+VALUES (
+    2,
+    'Intel Core i9-14900KX',
+    'Crucial Pro Overclocking 32GB DDR5 6000 CL36',
+    'ASUS Prime Radeon RX 9060 XT 8GB GDDR6 OC Edition ',
+    'Corsair RM1000e (2025) 1000W',
+    'HyperX Pulsefire Haste 2 Core ',
+    'Redragon K745 Wired Gasket RGB Mechanical Keyboard ',
+    'Dell Alienware AW2725D 26.7"',
+    2434.00
+);
+  
 -- display all employees
 SELECT *
 FROM employee;
