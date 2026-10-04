@@ -119,20 +119,15 @@ INSERT INTO employeeRole (employeeId, roleDescription,roleBudget
 )
 VALUES (
     2,
-    'Architect-CAD Workstation', 2500.00
-    
+    'Architect-CAD Workstation', 2500.00    
 );
-
-
 
 INSERT INTO workstationBuild (employeeRoleId,workstationBuildRecommendation
 )
 VALUES (
-    2,'CAD worksation which includes high relosution monitors and large capacity of storge that can store requird programms and data a dedicated GPU which can multitask and provide greate resolution and with better performance '
+    2,
+    'CAD worksation which includes high relosution monitors and large capacity of storge that can store requird programms and data a dedicated GPU which can multitask and provide greate resolution and with better performance '
 );
-
-
-
 
 INSERT INTO build (
     workstationBuildId,
