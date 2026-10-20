@@ -1,4 +1,3 @@
-
 -- employee table
 -- stores basic employee information
 
@@ -42,16 +41,16 @@ CREATE TABLE build (
     buildId INT AUTO_INCREMENT PRIMARY KEY,
     workstationBuildId INT NOT NULL,
     buildCpu VARCHAR(255) NOT NULL,
-    buildMotherboard(255) NOT NULL, 
+    buildMotherboard VARCHAR(255) NOT NULL,
     buildRam VARCHAR(255) NOT NULL,
-    buildStorage VARCHAR(255) NOT NULL, 
+    buildStorage VARCHAR(255) NOT NULL,
     buildGpu VARCHAR(255),
     buildPwr VARCHAR(255) NOT NULL,
-    buildCase, VARCHAR(255) NOT NULL, 
+    buildCase VARCHAR(255) NOT NULL,
     buildMouse VARCHAR(255) NOT NULL,
     buildKeyboard VARCHAR(255) NOT NULL,
     buildMonitor VARCHAR(255) NOT NULL,
-    buildWebcam VARCHAR(255) NOT NULL, 
+    buildWebcam VARCHAR(255) NOT NULL,
     buildHeadset VARCHAR(255) NOT NULL,
     buildNetwork VARCHAR(255) NOT NULL,
     buildTotalCost DECIMAL(10,2) NOT NULL,
@@ -98,30 +97,46 @@ VALUES (
 INSERT INTO build (
     workstationBuildId,
     buildCpu,
+    buildMotherboard,
     buildRam,
+    buildStorage,
     buildGpu,
     buildPwr,
+    buildCase,
     buildMouse,
     buildKeyboard,
     buildMonitor,
+    buildWebcam,
+    buildHeadset,
+    buildNetwork,
     buildTotalCost
 )
 VALUES (
     1,
     'AMD Ryzen 5 9600X',
+    'Gigabyte B650M DDR5 Micro ATX',
     '16GB Corsair Vengeance RGB DDR5 5200',
+    'Western Digital Blue 500GB SSD',
     NULL,
     'MSI MAG A650GL 650W 80+ Gold',
-    'Generic USB Optical Office Mouse',
-    'Generic USB Wired Office Keyboard',
+    'GameMax M60 Micro ATX Mid Tower',
+    'Logitech B100 Wired Optical Mouse',
+    'HP USB Slim Business Keyboard',
     'Dell 27 Plus QHD S2725DSM',
-    1250.00
+    'NexiGo N60 1080p',
+    'Not specified',
+    'CAT6 Ethernet Network Cable 5m',
+    866.00
 );
 
+
+-- insert employee
 
 INSERT INTO employee (employeeName)
 VALUES ('gowri');
 
+
+-- insert employee role
 
 INSERT INTO employeeRole (
     employeeId,
@@ -135,6 +150,8 @@ VALUES (
 );
 
 
+-- insert workstation recommendation
+
 INSERT INTO workstationBuild (
     employeeRoleId,
     workstationBuildRecommendation
@@ -145,26 +162,40 @@ VALUES (
 );
 
 
+-- insert workstation build
+
 INSERT INTO build (
     workstationBuildId,
     buildCpu,
+    buildMotherboard,
     buildRam,
+    buildStorage,
     buildGpu,
     buildPwr,
+    buildCase,
     buildMouse,
     buildKeyboard,
     buildMonitor,
+    buildWebcam,
+    buildHeadset,
+    buildNetwork,
     buildTotalCost
 )
 VALUES (
     2,
-    'Intel Core i9-14900KX',
+    'Intel Core i9-14900K',
+    'ASUS TUF GAMING B760-PLUS WIFI',
     'Crucial Pro Overclocking 32GB DDR5 6000 CL36',
+    'Crucial P310 2TB M.2 PCIe 4.0 NVMe',
     'ASUS Prime Radeon RX 9060 XT 8GB GDDR6 OC Edition',
     'Corsair RM1000e (2025) 1000W',
+    'Corsair 3200D RS ARGB Black',
     'HyperX Pulsefire Haste 2 Core',
     'Redragon K745 Wired Gasket RGB Mechanical Keyboard',
     'Dell Alienware AW2725D 26.7"',
+    'NexiGo N60 1080p',
+    'HyperX Cloud Stinger 2 Wired Gaming Headset',
+    'CAT6 Ethernet Network Cable 5m',
     2434.00
 );
 
@@ -249,12 +280,18 @@ SELECT
     buildId,
     (
         (buildCpu IS NOT NULL) +
+        (buildMotherboard IS NOT NULL) +
         (buildRam IS NOT NULL) +
+        (buildStorage IS NOT NULL) +
         (buildGpu IS NOT NULL) +
         (buildPwr IS NOT NULL) +
+        (buildCase IS NOT NULL) +
         (buildMouse IS NOT NULL) +
         (buildKeyboard IS NOT NULL) +
-        (buildMonitor IS NOT NULL)
+        (buildMonitor IS NOT NULL) +
+        (buildWebcam IS NOT NULL) +
+        (buildHeadset IS NOT NULL) +
+        (buildNetwork IS NOT NULL)
     ) AS itemCount
 FROM build
 WHERE buildId = 1;
@@ -298,12 +335,18 @@ SELECT
     build.buildId,
     employeeRole.roleDescription,
     build.buildCpu,
+    build.buildMotherboard,
     build.buildRam,
+    build.buildStorage,
     build.buildGpu,
     build.buildPwr,
+    build.buildCase,
     build.buildMouse,
     build.buildKeyboard,
     build.buildMonitor,
+    build.buildWebcam,
+    build.buildHeadset,
+    build.buildNetwork,
     build.buildTotalCost
 FROM build
 JOIN workstationBuild
