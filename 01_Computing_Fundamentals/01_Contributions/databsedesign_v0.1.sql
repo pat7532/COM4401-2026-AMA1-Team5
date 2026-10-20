@@ -44,6 +44,7 @@ CREATE TABLE build (
     buildCpu VARCHAR(255) NOT NULL,
     buildMotherboard(255) NOT NULL, 
     buildRam VARCHAR(255) NOT NULL,
+    buildStorage VARCHAR(255) NOT NULL, 
     buildGpu VARCHAR(255),
     buildPwr VARCHAR(255) NOT NULL,
     buildCase, VARCHAR(255) NOT NULL, 
