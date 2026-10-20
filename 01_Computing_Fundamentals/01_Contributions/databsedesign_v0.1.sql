@@ -42,12 +42,17 @@ CREATE TABLE build (
     buildId INT AUTO_INCREMENT PRIMARY KEY,
     workstationBuildId INT NOT NULL,
     buildCpu VARCHAR(255) NOT NULL,
+    buildMotherboard(255) NOT NULL, 
     buildRam VARCHAR(255) NOT NULL,
     buildGpu VARCHAR(255),
     buildPwr VARCHAR(255) NOT NULL,
+    buildCase, VARCHAR(255) NOT NULL, 
     buildMouse VARCHAR(255) NOT NULL,
     buildKeyboard VARCHAR(255) NOT NULL,
     buildMonitor VARCHAR(255) NOT NULL,
+    buildWebcam VARCHAR(255) NOT NULL, 
+    buildHeadset VARCHAR(255) NOT NULL,
+    buildNetwork VARCHAR(255) NOT NULL,
     buildTotalCost DECIMAL(10,2) NOT NULL,
 
     FOREIGN KEY (workstationBuildId)
