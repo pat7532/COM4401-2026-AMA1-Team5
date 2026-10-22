@@ -200,6 +200,76 @@ VALUES (
 );
 
 
+-- insert employee
+
+INSERT INTO employee (employeeName)
+VALUES ('Josh');
+
+
+-- insert employee role
+
+INSERT INTO employeeRole (
+    employeeId,
+    roleDescription,
+    roleBudget
+)
+VALUES (
+    3,
+    'High-Performance Workstation',
+    3750.00
+);
+
+
+-- insert workstation recommendation
+
+INSERT INTO workstationBuild (
+    employeeRoleId,
+    workstationBuildRecommendation
+)
+VALUES (
+    3,
+    'High-performance workstation suitable for demanding applications, graphics processing, multitasking and productivity across two 4K monitors.'
+);
+
+
+-- insert workstation build
+
+INSERT INTO build (
+    workstationBuildId,
+    buildCpu,
+    buildMotherboard,
+    buildRam,
+    buildStorage,
+    buildGpu,
+    buildPwr,
+    buildCase,
+    buildMouse,
+    buildKeyboard,
+    buildMonitor,
+    buildWebcam,
+    buildHeadset,
+    buildNetwork,
+    buildTotalCost
+)
+VALUES (
+    3,
+    'AMD Ryzen 9 9900X',
+    'ASUS TUF GAMING B850-PLUS WIFI',
+    'Patriot Venom Black DDR5-6000 CL30 64GB (2x32GB)',
+    'Crucial T710 4TB M.2-2280 PCIe 5.0 x4 NVMe SSD',
+    'MSI GeForce RTX 5070 Ti 16G VENTUS 3X OC GDDR7',
+    'Corsair RM850e (2025) ATX 850W Fully Modular',
+    'NZXT H5 Flow (2024) ATX Mid Tower Black; Corsair NAUTILUS RS Water 360mm Black',
+    'Corsair M55 Optical Wired Gaming Mouse',
+    'Corsair K70 CORE RGB Wired Mechanical Gaming Keyboard',
+    '2 x Asus Eye Care VY27UQ 27-inch 4K 60Hz IPS Monitor',
+    'Not specified',
+    'HyperX Cloud Stinger 2 Wired Gaming Headset',
+    'Cat 8 Ethernet',
+    3731.40
+);
+
+
 -- display all employees
 
 SELECT *
@@ -333,6 +403,7 @@ JOIN employeeRole
 
 SELECT
     build.buildId,
+    employee.employeeName,
     employeeRole.roleDescription,
     build.buildCpu,
     build.buildMotherboard,
@@ -352,4 +423,8 @@ FROM build
 JOIN workstationBuild
     ON build.workstationBuildId = workstationBuild.workstationBuildId
 JOIN employeeRole
-    ON workstationBuild.employeeRoleId = employeeRole.employeeRoleId;
+    ON workstationBuild.employeeRoleId = employeeRole.employeeRoleId
+JOIN employee
+    ON employeeRole.employeeId = employee.employeeId;
+
+
