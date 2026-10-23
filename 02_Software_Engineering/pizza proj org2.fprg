@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="pizza proj"/>
+        <attribute name="authors" value="Students"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-10-02 02:38:32 PM"/>
+        <attribute name="created" value="U3R1ZGVudHM7QzItMTdMQUI7MjAyNi0xMC0wMjsxMDo1MTozOCBBTTsyNTkx"/>
+        <attribute name="edited" value="U3R1ZGVudHM7QzItMTdMQUI7MjAyNi0xMC0wMjswMjozODozMiBQTTs1OzI3MTg="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Discount" type="Real" array="False" size=""/>
+            <declare name="Ps" type="Real" array="False" size=""/>
+            <declare name="BsubT" type="Real" array="False" size=""/>
+            <declare name="PsizeT" type="Real" array="False" size=""/>
+            <declare name="Pm" type="Real" array="False" size=""/>
+            <declare name="Pl" type="Real" array="False" size=""/>
+            <declare name="oneExt" type="Real" array="False" size=""/>
+            <declare name="twoExt" type="Real" array="False" size=""/>
+            <declare name="threeExt" type="Real" array="False" size=""/>
+            <declare name="moreExt" type="Real" array="False" size=""/>
+            <declare name="Dlvry" type="Real" array="False" size=""/>
+            <assign variable="Ps" expression="3.25"/>
+            <assign variable="Pm" expression="5.50"/>
+            <assign variable="Pl" expression="7.15"/>
+            <assign variable="OneExt" expression="0.75"/>
+            <assign variable="twoExt" expression="1.35"/>
+            <assign variable="threeExt" expression="2.00"/>
+            <assign variable="moreExt" expression="2.50"/>
+            <assign variable="Dlvry" expression="2.50"/>
+            <declare name="Cname" type="String" array="False" size=""/>
+            <output expression="&quot;The rate of one small pizza is :&quot;" newline="True"/>
+            <output expression="Ps" newline="True"/>
+            <output expression="&quot;The rate of one medium pizza is :&quot;" newline="True"/>
+            <output expression="Pm" newline="True"/>
+            <output expression="&quot;The rate of one large pizza is :&quot;" newline="True"/>
+            <output expression="Pl" newline="True"/>
+            <output expression="&quot;The rate of one topping is &quot;" newline="True"/>
+            <output expression="oneExt" newline="True"/>
+            <output expression="&quot;The rate of 2 topping is :&quot;" newline="True"/>
+            <output expression="twoExt" newline="True"/>
+            <output expression="&quot;Enter your name &quot;" newline="False"/>
+            <output expression="&quot;The rate of 3 topping is :&quot;" newline="True"/>
+            <output expression="threeExt" newline="True"/>
+            <output expression="&quot;The rate of 4 and more topping is :&quot;" newline="True"/>
+            <output expression="moreExt" newline="True"/>
+            <input variable="Cname"/>
+            <declare name="Caddress" type="String" array="False" size=""/>
+            <output expression="&quot;Enter the address&quot;" newline="True"/>
+            <input variable="Caddress"/>
+            <declare name="Cphnumb" type="Integer" array="False" size=""/>
+            <output expression="&quot;Enter the phone number to register&quot;" newline="True"/>
+            <input variable="Cphnumb"/>
+            <declare name="numbP" type="Integer" array="False" size=""/>
+            <output expression="&quot;Enter the number of pizza reqiured &quot;" newline="True"/>
+            <input variable="numbP"/>
+            <if expression="numbP&gt;6">
+                <then>
+                    <output expression="&quot;More than 6 pizza cannot be ordered in a single order&quot;" newline="True"/>
+                    <breakpoint expression="" always="True"/>
+                </then>
+                <else>
+                    <if expression="numbP&lt;1">
+                        <then>
+                            <output expression="&quot;Invalid Input&quot;" newline="True"/>
+                            <breakpoint expression="" always="True"/>
+                        </then>
+                        <else/>
+                    </if>
+                </else>
+            </if>
+            <declare name="SizeP" type="Integer" array="False" size=""/>
+            <output expression="&quot;Enter the size for the pizza required in the form of number as aqssigned,1=small,2= medium,3=large &quot;" newline="True"/>
+            <input variable="SizeP"/>
+            <if expression="SizeP==1">
+                <then>
+                    <assign variable="PsizeT" expression="Ps"/>
+                </then>
+                <else>
+                    <if expression="SizeP==2">
+                        <then>
+                            <assign variable="PsizeT" expression="Pm"/>
+                        </then>
+                        <else>
+                            <if expression="SizeP==3">
+                                <then>
+                                    <assign variable="PsizeT" expression="Pl"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Invalid input&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="BsubT" expression="numbP * PsizeT"/>
+            <declare name="NumbofToppings" type="Integer" array="False" size=""/>
+            <output expression="&quot;Enter the number of topping required&quot;" newline="True"/>
+            <input variable="NumbofToppings"/>
+            <declare name="Deliveryrequired" type="Integer" array="False" size=""/>
+            <output expression="&quot;Do you require delivery input 1 for yes and 0 for no &quot;" newline="True"/>
+            <input variable="Deliveryrequired"/>
+            <if expression="Deliveryrequired==1">
+                <then>
+                    <assign variable="Deliveryrequired" expression="Dlvry"/>
+                </then>
+                <else>
+                    <assign variable="Deliveryrequired" expression="0"/>
+                </else>
+            </if>
+            <output expression="&quot;The Customers name is :&quot;" newline="True"/>
+            <output expression="Cname" newline="True"/>
+            <output expression="&quot;The Customer address is : &quot;" newline="True"/>
+            <output expression="Caddress" newline="True"/>
+            <output expression="&quot;The Customer phone number is :&quot;" newline="True"/>
+            <output expression="Cphnumb" newline="True"/>
+            <output expression="&quot;The Pizza size ordered:&quot;" newline="True"/>
+            <output expression="SizeP" newline="True"/>
+            <output expression="&quot;The number of topping ordered:&quot;" newline="True"/>
+            <output expression="NumbofToppings" newline="True"/>
+            <output expression="&quot;Did the customer choose delivery 1 for yes 0 for no&quot;" newline="True"/>
+            <output expression="Deliveryrequired" newline="True"/>
+            <declare name="subtot" type="Real" array="False" size=""/>
+            <declare name="Ttoppings" type="Real" array="False" size=""/>
+            <if expression="NumbofToppings==1">
+                <then>
+                    <assign variable="Ttoppings" expression="oneExt"/>
+                </then>
+                <else>
+                    <if expression="NumbofToppings==2">
+                        <then>
+                            <assign variable="Ttoppings" expression="twoExt"/>
+                        </then>
+                        <else>
+                            <if expression="NumbofToppings==3">
+                                <then>
+                                    <assign variable="Ttoppings" expression="threeExt"/>
+                                </then>
+                                <else>
+                                    <if expression="NumbofToppings&gt;3">
+                                        <then>
+                                            <assign variable="Ttoppings" expression="moreExt"/>
+                                        </then>
+                                        <else/>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="Subtot" expression="BsubT + Ttoppings + Deliveryrequired"/>
+            <if expression="(Subtot - Deliveryrequired)&gt;20">
+                <then>
+                    <assign variable="Discount" expression="((Subtot - Deliveryrequired)-((10 *(Subtot-Deliveryrequired))/100))"/>
+                </then>
+                <else>
+                    <assign variable="Discount" expression="0"/>
+                </else>
+            </if>
+            <output expression="&quot;The Discount amount is&quot;" newline="True"/>
+            <output expression="Discount" newline="True"/>
+            <declare name="Tpizza" type="Real" array="False" size=""/>
+            <assign variable="Tpizza" expression="Discount + Subtot"/>
+            <output expression="&quot; Your total amount to pay &quot;" newline="True"/>
+            <output expression="Tpizza" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
